@@ -1,0 +1,12 @@
+
+
+
+
+.box-bottom-right {
+    position:relative;
+}
+.element-bottom {
+    position:absolute;
+    bottom:15px;
+    right: 10px;
+}
