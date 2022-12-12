@@ -1,0 +1,118 @@
+html {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  font-family: 'Secular One';
+}
+
+body {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+
+.colored_by_style{
+  color: #211c0d;
+}
+
+.inverse_colored_by_style{
+  color: #f0bc00;
+}
+
+.side-menu{
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  opacity: 1;
+  transition: 0.3s;
+
+  margin-left: 10px;
+}
+
+
+
+a{
+  text-decoration: none;
+}
+
+footer{
+  bottom: 12px;
+  position: fixed;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.main-msg-container{
+  position: absolute;
+  white-space: nowrap;
+  color: white;
+  transform: translate(-50%, -50%);
+  
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+  
+  top: 50%;
+  left: 50%;
+}
+
+.main-msg{
+  text-align: center;
+  font-size: 500%;
+  color: white;
+
+  margin-bottom: -35px;
+  top: 50%;
+}
+
+.info-text{
+  margin-left: 4px;
+  font-size: 110%;
+  text-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+}
+
+.overview-icon:hover{
+  transform: rotate(90deg);
+}
+
+
+.translator-icon{
+  position: absolute;
+  right: 10px;
+}
+
+.profile-img{
+  text-align: center;
+  font-size: 25px;
+  margin-top: 20px;
+  color: #ffffff;
+  
+  cursor: pointer;
+  transition: 0.2s;
+  
+}
+
+.white{
+  color: white;
+}
+
+@keyframes text-animation {
+  0%  {opacity: 0}
+  100% {opacity: 1;}
+}
+
+.text-animated{
+  animation-name: text-animation;
+  animation-duration: 2s;
+}
+
+.profile-img:hover{
+  transform: scale(1.1);
+}
