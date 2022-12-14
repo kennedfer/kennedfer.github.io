@@ -1,6 +1,7 @@
 let imgs = [];
 let canvas;
 
+
 class Layer {
   constructor(img, layer) {
     this.x = 0;
@@ -48,7 +49,7 @@ class Star {
 let star1;
 let star2;
 let stars = [];
-let n_stars = 50;
+let n_stars = Math.random() * 100 + 20;
 let index = 0;
 let mut = 1;
 let bg_img;
@@ -86,8 +87,13 @@ let pt_text = {
   night_str: "noite",
 };
 let current_language = pt_text;
+let maxWidth;
+let maxHeight
 
 function preload() {
+
+  maxWidth = (window.innerWidth);
+  maxHeight = (window.innerHeight);
 
   if (is_daytime) {
     style_color = light_color;
@@ -106,6 +112,7 @@ function preload() {
 
   for (var i = 1; i < 7; i++) {
     var img = loadImage(path + '/' + (7 - i) + '.png');
+    //img.resize(maxWidth, maxHeight);
     imgs.push(new Layer(img, (7 - i)));
   }
 }
@@ -113,7 +120,6 @@ function setup() {
   star1 = new Star();
   star2 = new Star();
 
-  createCanvas(400, 400);
   stroke(255)
   strokeWeight(5);
 
@@ -147,12 +153,15 @@ function setup() {
 
   document.getElementById("timeday-text").innerHTML = inverse_current_time;
   canvas = createCanvas(window.innerWidth, window.innerHeight);
+  canvas.parent("canvas");
+  canvas.style("width", "100%");
+  canvas.style("height", "100%");
 
   translatePage();
 }
 
 function draw() {
-  scale(1.2);
+  scale((maxHeight + 200) / 720);
   image(bg_img, 0, 0)
   var mx = (mouseX - width / 2) / 10;
   var my = (mouseY - height / 2) / 10;
@@ -162,12 +171,14 @@ function draw() {
     star1.update();
     star2.update();
 
+    noStroke();
+
     stars.forEach((pos, index, arr) => {
-      noStroke();
 
       circle(pos.x, pos.y, Math.random() * 5);
-      stroke(255)
     });
+
+    stroke(255)
   }
   imgs.forEach((img, i, arr) => {
     img.update(mx, my);
@@ -176,8 +187,7 @@ function draw() {
 }
 
 function translatePage() {
-  current_language = current_language == en_text ? pt_text : en_text;
-
+  current_language = (current_language == en_text) ? pt_text : en_text;
 
   animTexts();
 
