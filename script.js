@@ -1,7 +1,3 @@
-let imgs = [];
-let canvas;
-
-
 class Layer {
   constructor(img, layer) {
     this.x = 0;
@@ -49,29 +45,30 @@ class Star {
 let star1;
 let star2;
 let stars = [];
-let n_stars = Math.random() * 100 + 20;
+let nStars = Math.random() * 100 + 20;
 let index = 0;
 let mut = 1;
-let bg_img;
-let current_hours = (new Date()).getHours();
+let bgImg;
+let currentHours = (new Date()).getHours();
+let imgs = [];
+let canvas;
+let isDaytime = currentHours < 18 && currentHours > 7;
+let styleColor;
+let inverseStyleColor;
+let currentTime;
+let inverseCurrentTime;
+let styledElements;
+let inverseStyledElements
 
-let is_daytime = current_hours < 18 && current_hours > 7;
-let style_color;
-let inverse_style_color;
-let current_time;
-let inverse_current_time;
-let styled_elements;
-let inverse_styled_elements
+let lightColor = "#f0bc00";
+let darkColor = "#371758";
 
-let light_color = "#f0bc00";
-let dark_color = "#371758";
+let messageText;
+let infoText;
+let footText;
+let daytimeText;
 
-let message_text;
-let info_text;
-let foot_text;
-let daytime_text;
-
-let en_text = {
+let enText = {
   message: "HI FOLKS, I AM ",
   info: 'I am a <i>simple</i> developer.<br>I love <b>game development</b> and I have a great passion for <b>mobile development</b>.<br> I am 19 years old and I live in Brazil, more details on  <a target="_blank" class="colored_by_style"href="https://github.com/kennedfer">Github</a> ❤️<br>',
   foot_message: 'Also try to open on ',
@@ -79,14 +76,14 @@ let en_text = {
   night_str: "night",
 };
 
-let pt_text = {
+let ptText = {
   message: "OI PESSOAL, EU SOU ",
   info: 'Sou um <i>simples</i> desenvolvedor.<br>Adoro <b>desenvolvimento de jogos</b> e tenho uma grande paixão por <b>desenvolvimento mobile</b>.<br> Tenho 19 anos e moro no Brasil, mais detalhes em <a target="_blank" class="colored_by_style"href="https://github.com/kennedfer">Github</a> ❤️<br>',
   foot_message: 'Também tente abrir “de” ',
   day_str: "dia",
   night_str: "noite",
 };
-let current_language = pt_text;
+let currentLanguage = ptText;
 let maxWidth;
 let maxHeight
 
@@ -95,20 +92,20 @@ function preload() {
   maxWidth = (window.innerWidth);
   maxHeight = (window.innerHeight);
 
-  if (is_daytime) {
-    style_color = light_color;
-    inverse_style_color = dark_color;
-    current_time = "day";
-    inverse_current_time = "night";
+  if (isDaytime) {
+    styleColor = lightColor;
+    inverseStyleColor = darkColor;
+    currentTime = "day";
+    inverseCurrentTime = "night";
   } else {
-    style_color = dark_color;
-    inverse_style_color = light_color;
-    current_time = "night";
-    inverse_current_time = "day";
+    styleColor = darkColor;
+    inverseStyleColor = lightColor;
+    currentTime = "night";
+    inverseCurrentTime = "day";
   }
 
-  let path = "imgs/" + current_time;
-  bg_img = loadImage(path + "/7.png");
+  let path = "imgs/" + currentTime;
+  bgImg = loadImage(path + "/7.png");
 
   for (var i = 1; i < 7; i++) {
     var img = loadImage(path + '/' + (7 - i) + '.png');
@@ -123,7 +120,7 @@ function setup() {
   stroke(255)
   strokeWeight(5);
 
-  for (let i = 0; i < n_stars; i++) {
+  for (let i = 0; i < nStars; i++) {
     let x = Math.random() * window.innerWidth;
     let y = Math.random() * (window.innerHeight / 2 + 100);
     stars.push(createVector(x, y));
@@ -138,7 +135,7 @@ function setup() {
   paintByStyle();
   paintByInverseStyle();
 
-  console.log(inverse_styled_elements);
+  console.log(inverseStyledElements);
 
   document.getElementById("translator-button").onclick = () => {
     translatePage();
@@ -146,12 +143,12 @@ function setup() {
 
   let text_name = document.getElementById("name");
 
-  message_text = document.getElementById("message");
-  info_text = document.getElementById("info");
-  foot_text = document.getElementById("foot-text");
-  daytime_text = document.getElementById("timeday-text");
+  messageText = document.getElementById("message");
+  infoText = document.getElementById("info");
+  footText = document.getElementById("foot-text");
+  daytimeText = document.getElementById("timeday-text");
 
-  document.getElementById("timeday-text").innerHTML = inverse_current_time;
+  document.getElementById("timeday-text").innerHTML = inverseCurrentTime;
   canvas = createCanvas(window.innerWidth, window.innerHeight);
   canvas.parent("canvas");
   canvas.style("width", "100%");
@@ -162,12 +159,12 @@ function setup() {
 
 function draw() {
   scale((maxHeight + 200) / 720);
-  image(bg_img, 0, 0)
+  image(bgImg, 0, 0)
   var mx = (mouseX - width / 2) / 10;
   var my = (mouseY - height / 2) / 10;
 
 
-  if (!is_daytime) {
+  if (!isDaytime) {
     star1.update();
     star2.update();
 
@@ -187,14 +184,14 @@ function draw() {
 }
 
 function translatePage() {
-  current_language = (current_language == en_text) ? pt_text : en_text;
+  currentLanguage = (currentLanguage == enText) ? ptText : enText;
 
   animTexts();
 
-  message_text.firstChild.nodeValue = current_language.message;
-  info_text.innerHTML = current_language.info;
-  foot_text.firstChild.nodeValue = current_language.foot_message;
-  daytime_text.firstChild.nodeValue = is_daytime ? current_language.night_str : current_language.day_str;
+  messageText.firstChild.nodeValue = currentLanguage.message;
+  infoText.innerHTML = currentLanguage.info;
+  footText.firstChild.nodeValue = currentLanguage.foot_message;
+  daytimeText.firstChild.nodeValue = isDaytime ? currentLanguage.night_str : currentLanguage.day_str;
 
   paintByStyle();
 }
@@ -209,15 +206,15 @@ function animTexts() {
 }
 
 function paintByStyle() {
-  styled_elements = (document.getElementsByClassName("colored_by_style"));
-  styled_elements.forEach(element => {
-    element.style.color = style_color;
+  styledElements = (document.getElementsByClassName("colored_by_style"));
+  styledElements.forEach(element => {
+    element.style.color = styleColor;
   });
 }
 
 function paintByInverseStyle() {
-  inverse_styled_elements = (document.getElementsByClassName("inverse_colored_by_style"));
-  inverse_styled_elements.forEach(element => {
-    element.style.color = inverse_style_color;
+  inverseStyledElements = (document.getElementsByClassName("inverse_colored_by_style"));
+  inverseStyledElements.forEach(element => {
+    element.style.color = inverseStyleColor;
   });
 }
