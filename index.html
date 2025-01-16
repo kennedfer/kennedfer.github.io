@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" class="">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kennedfer - portifolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet" />
+
+  <style>
+    body {
+      font-family: "Outfit" !important;
+      scrollbar-width: none;
+    }
+
+    * {
+      scrollbar-width: none;
+    }
+
+    details {
+      cursor: pointer;
+      user-select: none;
+
+      interpolate-size: allow-keywords;
+
+      &::details-content {
+        transition:
+          block-size 0.5s,
+          content-visibility 0.5s allow-discrete;
+        overflow: hidden;
+        block-size: 0;
+      }
+
+      &[open]::details-content {
+        block-size: auto;
+      }
+    }
+
+    summary {
+      list-style-type: disc;
+    }
+  </style>
+
+  <link rel="stylesheet" href="./style.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+<body class="bg-white text-gray-900 dark:bg-gray-900 dark:text-gray-100 transition-all">
+  <div class="max-w-2xl mx-auto p-6 my-12">
+    <header class="flex">
+      <div class="ml-auto flex flex-row-reverse">
+        <img id="theme-toggle" src="./assets/icons/light.svg" alt="Mudar tema" class="cursor-pointer p-2 w-9 h-9">
+        <!-- <img id="language-toggle" src="./assets/icons/usa.svg" alt="Mudar idioma" class="cursor-pointer p-2 w-9 h-9"> -->
+      </div>
+    </header>
+    <h1 class="text-3xl font-bold title display">kenned ferreira</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400">
+      engenheiro de software • desenvolvedor de jogos
+    </p>
+    <p class="mt-4 text-md text-gray-700 text-justify dark:text-gray-300">
+      Sou engenheiro de software, apaixonado por tecnologia e atualmente foco
+      no desenvolvimento com Nest.js e Next.js. Minha jornada começou com
+      Java, evoluindo para o mundo web em 2022, influenciado por Node.js e
+      React. Estou cursando Ciência da Computação e desenvolvendo habilidades
+      práticas em desenvolvimento Fullstack.
+    </p>
+
+    <nav class="mt-6">
+      <ul class="flex space-x-4 text-blue-600">
+        <li>
+          <a href="#" class="text-gray-400 font-semibold hover:text-gray-500">experiencias</a>
+        </li>
+        <li>
+          <a href="#" class="text-gray-400 font-semibold hover:text-gray-500">formacao academica</a>
+        </li>
+        <li>
+          <a href="#" class="text-gray-400 font-semibold hover:text-gray-500">contato</a>
+        </li>
+      </ul>
+    </nav>
+
+    <section class="mt-8">
+      <details class="flex flex-col">
+        <summary class="text-xl text-gray-600 dark:text-gray-300 ">
+          experiências profissionais
+        </summary>
+        <ul class="mt-4 space-y-4 gap-4">
+          <li class="flex justify-between items-center">
+            <span><span class="font-bold">AMSET</span> - Auxiliar Administrativo com foco em Desenvolvimento de
+              Sistemas</span>
+            <span class="text-gray-500 whitespace-nowrap">Set 2024 - Atualmente</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <span><span class="font-bold">InstalockDev</span> - Engenheiro de Software</span>
+            <span class="text-gray-500">Set 2024 - Atualmente</span>
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="mt-8">
+      <details>
+        <summary class="text-xl text-gray-600 dark:text-gray-300 ">formação acadêmica</summary>
+        <ul class="mt-4 space-y-4">
+          <li class="flex justify-between items-center">
+            <span><span class="font-bold">Estácio</span> - Bacharelado em Ciência da Computação</span>
+            <span class="text-gray-500">2022 - 2026</span>
+          </li>
+          <li class="flex gap-4 justify-between items-center">
+            <span><span class="font-bold">Programadores do Amanhã</span> - Formação em Desenvolvimento Web Full
+              Stack + Soft Skills + Inglês</span>
+            <span class="whitespace-nowrap text-gray-500">Out 2024</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <span><span class="font-bold">DIO</span> - Santander Bootcamp 2023 - Fullstack Java+Angular</span>
+            <span class="text-gray-500">Out 2023</span>
+          </li>
+        </ul>
+      </details>
+    </section>
+
+    <section class="mt-8">
+      <details>
+        <summary class="text-xl text-gray-600 dark:text-gray-300 ">projetos</summary>
+        <ul class="mt-4 space-y-4 flex flex-col">
+          <li class="flex justify-between items-center">
+            <a href="https://www.linkedin.com/in/kennedfer">Sistema de Gestão de Pedidos e Medições (Fullstack - Next.js
+              + MongoDB)</a>
+            <span class="text-gray-500">Jan 2025</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <a href="https://www.linkedin.com/in/kennedfer">
+              Planilha Automatizada para Controle de Treinamentos
+            </a>
+            <span class="text-gray-500">Dez 2024</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <a href="https://kennedfer.github.io/placehold-it/">Placehold It</a><span
+              class="mr-auto ml-3 text-gray-500">Gerador de
+              imagens
+              placeholder</span>
+            <span class="text-gray-500">Nov 2024</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <a href="https://kennedfer.github.io/meus-jogos/">Kennis - Itch.io</a><span
+              class="mr-auto ml-3 text-gray-500">Página
+              de
+              jogos
+              feitos por
+              mim</span>
+            <span class="text-gray-500">Out 2024</span>
+          </li>
+          <li class="ml-auto"><a class="text-blue-600" href="https://www.linkedin.com/in/kennedfer">Veja meus outros
+              projetos</a></li>
+        </ul>
+      </details>
+    </section>
+    <section class="mt-8">
+      <details>
+        <summary class="text-xl text-gray-600 dark:text-gray-300 ">prêmios e reconhecimentos</summary>
+        <ul class="mt-4 space-y-4 flex flex-col">
+          <li class="flex justify-between items-center">
+            <span><span class="font-bold">2° Lugar</span> no Hackathon Programadores do Amanhã + Onfly</span>
+            <span class="text-gray-500">Jan 2025</span>
+          </li>
+          <li class="flex justify-between items-center">
+            <span>
+              <span class="font-bold">2° Lugar</span> no Ranking do Santander Bootcamp 2023 - Fullstack Java+Angular
+            </span>
+            <span class="text-gray-500">Dez 2024</span>
+          </li>
+        </ul>
+      </details>
+    </section>
+    <section class="mt-8">
+      <h2 class="text-xl">contato</h2>
+      <ul class="mt-4 space-y-4">
+        <li class="flex justify-between items-center">
+          <a href="mailto:kenned14santos@gmail.com">kenned14santos@gmail.com</a>
+          <span class="text-gray-500">Email</span>
+        </li>
+        <li class="flex justify-between items-center">
+          <span>(98) 9 8476-9384</span>
+          <span class="text-gray-500">Celular</span>
+        </li>
+        <li class="flex justify-between items-center">
+          <a href="https://www.linkedin.com/in/kennedfer">https://www.linkedin.com/in/kennedfer/</a>
+          <span class="text-gray-500">Linkedin</span>
+        </li>
+        <li class="flex justify-between items-center">
+          <a href="https://github.com/kennedfer">https://github.com/kennedfer</a>
+          <span class="text-gray-500">Github</span>
+        </li>
+      </ul>
+    </section>
+  </div>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+
+    function changeIcon(mode) {
+
+    }
+
+    const toggleButton = document.getElementById("theme-toggle");
+    const html = document.documentElement;
+
+    if (localStorage.getItem("dark-mode") === "true") {
+      html.classList.add("dark");
+      toggleButton.src = "./assets/icons/light.svg"
+    } else {
+      toggleButton.src = "./assets/icons/dark.svg"
+    }
+
+    toggleButton.addEventListener("click", () => {
+      html.classList.toggle("dark");
+      const isDark = html.classList.contains("dark");
+
+      localStorage.setItem("dark-mode", isDark);
+      console.log(toggleButton.src)
+      toggleButton.src = ".\\assets\\icons\\" + (isDark ? "light" : "dark") + ".svg"
+    });
+
+  </script>
+</body>
+
+</html>

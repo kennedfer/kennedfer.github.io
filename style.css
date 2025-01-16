@@ -1,0 +1,9 @@
+html {
+  scroll-behavior: smooth !important;
+}
+
+@layer base {
+  html {
+    font-size: 90%;
+  }
+}
